@@ -1,4 +1,5 @@
 # SemEval2026-POLAR
+This project was worked in collaboration with mhossai6@ualberta.ca
 Official repository for UAlberta at SemEval-2026 Task 9: Detecting Multilingual, Multicultural and Multievent Online Polarization
 
 This repo contains our systems for the POLAR shared task, covering:
