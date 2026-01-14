@@ -1,0 +1,400 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Subtask 1: Polarization Detection - Evaluation Results</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700" rel="stylesheet">
+        <style>
+            /* Reset */
+            html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote,
+            pre, a, table, caption, tbody, tfoot, thead, tr, th, td {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-size: 100%;
+                font: inherit;
+                vertical-align: baseline;
+            }
+            
+            body {
+                line-height: 1.65;
+                font-family: "Open Sans", sans-serif;
+                font-size: 13pt;
+                font-weight: 400;
+                color: #7f888f;
+                background: #ffffff;
+            }
+            
+            /* Typography */
+            h1, h2, h3, h4, h5, h6 {
+                color: #3d4449;
+                font-family: "Roboto Slab", serif;
+                font-weight: 700;
+                line-height: 1.5;
+                margin: 0 0 1em 0;
+            }
+            
+            h1 {
+                font-size: 2.5em;
+                margin: 0 0 0.3em 0;
+                line-height: 1.2;
+            }
+            
+            h2 {
+                font-size: 1.4em;
+            }
+            
+            h3 {
+                font-size: 1.1em;
+            }
+            
+            p {
+                margin: 0 0 2em 0;
+            }
+            
+            strong, b {
+                color: #3d4449;
+                font-weight: 600;
+            }
+            
+            /* Layout */
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2em;
+            }
+            
+            /* Header */
+            .header {
+                border-bottom: solid 3px #f56a6a;
+                padding: 3em 0 1.5em 0;
+                text-align: center;
+            }
+            
+            .header h1 {
+                color: #3d4449;
+                margin-bottom: 0.3em;
+            }
+            
+            .header p {
+                font-family: "Roboto Slab", serif;
+                font-size: 0.9em;
+                font-weight: 400;
+                letter-spacing: 0.075em;
+                margin-top: -0.3em;
+                text-transform: uppercase;
+                color: #7f888f;
+            }
+            
+            /* Stats Grid */
+            .stats-section {
+                padding: 2.5em 0 1.5em 0;
+                border-top: solid 2px rgba(210, 215, 217, 0.75);
+            }
+            
+            .stats-grid {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                gap: 1em;
+                margin: 0 0 1.5em 0;
+            }
+            
+            .stat-card {
+                flex: 1;
+                min-width: 0;
+                text-align: center;
+                border: solid 1px rgba(210, 215, 217, 0.75);
+                border-radius: 0.375em;
+                padding: 1.5em 1em;
+                background: #ffffff;
+            }
+            
+            .stat-number {
+                font-family: "Roboto Slab", serif;
+                font-size: 2.2em;
+                font-weight: 700;
+                color: #f56a6a;
+                margin-bottom: 0.4em;
+                line-height: 1;
+            }
+            
+            .stat-label {
+                font-family: "Roboto Slab", serif;
+                font-size: 0.75em;
+                font-weight: 400;
+                letter-spacing: 0.075em;
+                text-transform: uppercase;
+                color: #3d4449;
+            }
+            
+            /* Results Section */
+            .results-section {
+                padding: 2.5em 0 1.5em 0;
+                border-top: solid 2px rgba(210, 215, 217, 0.75);
+            }
+            
+            .section-header {
+                margin-bottom: 1.5em;
+            }
+            
+            .section-header > :last-child {
+                border-bottom: solid 2px #f56a6a;
+                display: inline-block;
+                margin: 0 0 1.5em 0;
+                padding: 0 0.5em 0.3em 0;
+            }
+            
+            /* Table */
+            .table-wrapper {
+                -webkit-overflow-scrolling: touch;
+                overflow-x: auto;
+                margin: 0 0 2em 0;
+            }
+            
+            table {
+                margin: 0 0 2em 0;
+                width: 100%;
+                border-collapse: collapse;
+            }
+            
+            table tbody tr {
+                border: solid 1px rgba(210, 215, 217, 0.75);
+                border-left: 0;
+                border-right: 0;
+            }
+            
+            table tbody tr:nth-child(2n + 1) {
+                background-color: rgba(230, 235, 237, 0.25);
+            }
+            
+            table td {
+                padding: 0.75em 0.75em;
+                color: #7f888f;
+            }
+            
+            table th {
+                color: #3d4449;
+                font-size: 0.9em;
+                font-weight: 600;
+                padding: 0 0.75em 0.75em 0.75em;
+                text-align: left;
+            }
+            
+            table thead {
+                border-bottom: solid 2px rgba(210, 215, 217, 0.75);
+            }
+            
+            .language-name {
+                font-weight: 600;
+                color: #3d4449;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .language-flag {
+                width: 24px;
+                height: 16px;
+                border-radius: 2px;
+                background: #f56a6a;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 10px;
+                font-weight: bold;
+            }
+            
+            .metric-primary {
+                font-weight: 700;
+                color: #f56a6a;
+                background: rgba(245, 106, 106, 0.1);
+                border-radius: 0.375em;
+                padding: 0.25em 0.5em;
+            }
+            
+            .metric-value {
+                font-weight: 500;
+                color: #7f888f;
+            }
+            
+            /* Footer */
+            .footer {
+                padding: 2.5em 0 1.5em 0;
+                border-top: solid 2px rgba(210, 215, 217, 0.75);
+                text-align: center;
+            }
+            
+            .badge {
+                display: inline-block;
+                padding: 0.4em 0.8em;
+                margin: 0.2em;
+                background: #f56a6a;
+                color: #ffffff;
+                border-radius: 0.375em;
+                font-size: 0.75em;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.075em;
+            }
+            
+            /* Responsive */
+            @media screen and (max-width: 980px) {
+                .stats-grid {
+                    margin: 0 0 2em 0;
+                    width: 100%;
+                }
+                
+                .stat-card {
+                    margin: 0 0 3em 0;
+                    width: 100%;
+                }
+            }
+            
+            @media screen and (max-width: 736px) {
+                body {
+                    font-size: 10pt;
+                }
+                
+                h1 {
+                    font-size: 2em;
+                    line-height: 1.4;
+                }
+                
+                h2 {
+                    font-size: 1.5em;
+                }
+                
+                .container {
+                    padding: 0 1em;
+                }
+                
+                .header {
+                    padding: 3em 0 1em 0;
+                }
+                
+                .stats-section,
+                .results-section,
+                .footer {
+                    padding: 3em 0 1em 0;
+                }
+                
+                table {
+                    font-size: 0.9em;
+                }
+                
+                table td,
+                table th {
+                    padding: 0.5em 0.5em;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Header -->
+            <header class="header">
+                <h1>Subtask 1: Polarization Detection</h1>
+                <p>Binary Classification Evaluation Results</p>
+            </header>
+            
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Languages Evaluated</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">0.807</div>
+                        <div class="stat-label">Average F1 Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">0.845</div>
+                        <div class="stat-label">Average Accuracy</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Results Section -->
+            <section class="results-section">
+                <header class="section-header">
+                    <h2>Your Results</h2>
+                </header>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Language</th>
+                                <th>Accuracy</th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>F1 Binary</th>
+                                <th>F1 Macro</th>
+                                <th>F1 Micro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                            <tr>
+                                <td class="language-name">
+                                    <span class="language-flag">BE</span>
+                                    Bengali
+                                </td>
+                                <td class="metric-value">0.8253</td>
+                                <td class="metric-value">0.7971</td>
+                                <td class="metric-value">0.7857</td>
+                                <td class="metric-value">0.7914</td>
+                                <td class="metric-primary">0.8206</td>
+                                <td class="metric-value">0.8253</td>
+                            </tr>
+        
+                            <tr>
+                                <td class="language-name">
+                                    <span class="language-flag">EN</span>
+                                    English
+                                </td>
+                                <td class="metric-value">0.825</td>
+                                <td class="metric-value">0.7719</td>
+                                <td class="metric-value">0.7458</td>
+                                <td class="metric-value">0.7586</td>
+                                <td class="metric-primary">0.8107</td>
+                                <td class="metric-value">0.825</td>
+                            </tr>
+        
+                            <tr>
+                                <td class="language-name">
+                                    <span class="language-flag">HI</span>
+                                    Hindi
+                                </td>
+                                <td class="metric-value">0.8832</td>
+                                <td class="metric-value">0.9138</td>
+                                <td class="metric-value">0.9464</td>
+                                <td class="metric-value">0.9298</td>
+                                <td class="metric-primary">0.791</td>
+                                <td class="metric-value">0.8832</td>
+                            </tr>
+        
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Footer -->
+            <footer class="footer">
+                <div>
+                    <span class="badge">Primary Metric: F1 Macro Score</span>
+                    <span class="badge">Binary Classification Results</span>
+                </div>
+                <p style="margin-top: 2em; color: #9fa3a6; font-size: 0.9em;">
+                    Generated by CodaBench Polarization Detection Evaluation System
+                </p>
+            </footer>
+        </div>
+    </body>
+    </html>
+    
